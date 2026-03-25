@@ -1,10 +1,11 @@
+package algoritmos;
 import java.util.Scanner;
 
 public class Ex04 {
 
     
     public static int encontrarMaior(int[] vetor) {
-    	int maior = vetor[0];
+    	int maior = Integer.MIN_VALUE;
     	
         for(int i = 0; i < vetor.length; i++) {
         	if(vetor[i] > maior) {
