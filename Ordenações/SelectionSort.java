@@ -4,8 +4,7 @@ public class SelectionSort{
         int vet [] = {4,5,1,3};
 
         ordenar(vet);
-
-
+        
     }
     public static void ordenar(int [] vet){
         
