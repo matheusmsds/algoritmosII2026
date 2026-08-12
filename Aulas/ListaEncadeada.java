@@ -22,11 +22,13 @@ public class ListaEncadeada {
     
     public int removerInicio() {
         if (inicio == null) return 0;
+        int removido = 0;
+        removido = inicio.valor;
         inicio = inicio.proximo;
         tamanho--;
-        
-        return inicio.valor;
-        
+
+
+        return removido;
     }
 
     public void adicionarInicio(int valor) {
