@@ -9,6 +9,19 @@ public class ListaEncadeada {
         public No(int valor) { this.valor = valor; }
     }
 
+
+	
+	public int removerInicio() {
+        if (inicio == null) return 0;
+        int removido = 0;
+        removido = inicio.valor;
+        inicio = inicio.proximo;
+        tamanho--;
+
+        return removido;
+    }
+
+
 	public ListaEncadeada() {
         this.inicio = null;
         this.tamanho = 0;
@@ -35,7 +48,6 @@ public class ListaEncadeada {
 		return (valor == lista.valor) ? true: pegarNalista(valor, lista.proximo);
 	}
 
-
     public void imprimir() {
         No t = inicio;
         while (t != null) {
@@ -45,15 +57,34 @@ public class ListaEncadeada {
         System.out.println("null");
     }
 
-	public int pegarFinal(){
-		No atual = this.inicio;
+	public int pegarMaior(){
+		No t = inicio;
+		if(t == null) return 0;
 
-		while(atual.proximo != null){
-			atual = atual.proximo;
+		int maior = t.valor;
+		while(t != null){
+			if(t.valor > maior){
+				maior = t.valor;
+			}
+			t = t.proximo;
 		}
-
-		return atual.valor;
+		return maior;
 	}
+
+	public int pegarMenor(){
+		No t = inicio;
+		if(t == null) return 0;
+
+		int menor = t.valor;
+		while(t != null){
+			if(t.valor < menor){
+				menor = t.valor;
+			}
+			t = t.proximo;
+		}
+		return menor;
+	}
+
     // implemente este método usando recursão
     public int contarRecursivo(int valor) {
         return contarRecursivo(valor, inicio);
@@ -64,6 +95,16 @@ public class ListaEncadeada {
     	return (lista.valor == valor ? 1 : 0)+contarRecursivo(valor, lista.proximo);
     }
     
+	public int somaRecursiva(){
+		return somaRecursiva(inicio);
+	}
+
+	private int somaRecursiva(No lista){
+		if(lista == null) return 0;
+
+		return lista.valor + somaRecursiva(lista.proximo);
+	}
+
     public ListaEncadeada clone() {
     	No aux = inicio;
     	ListaEncadeada clone = new ListaEncadeada();
@@ -73,21 +114,20 @@ public class ListaEncadeada {
     	}
     	return clone;
     }
-    
-	public int removerInicio() {
-        if (inicio == null) return 0;
-        int removido = 0;
-        removido = inicio.valor;
-        inicio = inicio.proximo;
-        tamanho--;
-
-        return removido;
-    }
-
+	
 	public int pegarInicio(){
 		return inicio.valor;
 	}
 
+	public int pegarFinal(){
+		No atual = this.inicio;
+
+		while(atual.proximo != null){
+			atual = atual.proximo;
+		}
+
+		return atual.valor;
+	}
 
     public void adicionarInicio(int valor) {
         No novo = new No(valor);

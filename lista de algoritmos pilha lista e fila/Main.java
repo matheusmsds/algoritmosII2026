@@ -2,13 +2,13 @@ public class Main {
     public static void main(String[] args) {
         ListaEncadeada lista = new ListaEncadeada();
         for(int i = 0; i < 10; i++){
-            lista.adicionarInicio(i+2);
+            lista.adicionarInicio(i+10);
         }
 
         lista.imprimir();
 
-        boolean tem = lista.estaNaLista(10);
-        System.out.println(lista.pegarInicio());
+        System.out.println(lista.pegarMaior());
+        System.out.println(lista.pegarMenor());
     }
 
     public static void armazenarPilha(){
