@@ -1,7 +1,14 @@
 public class Main {
     public static void main(String[] args) {
-        armazenarFila();
-        armazenarPilha();
+        ListaEncadeada lista = new ListaEncadeada();
+        for(int i = 0; i < 10; i++){
+            lista.adicionarInicio(i+2);
+        }
+
+        lista.imprimir();
+
+        boolean tem = lista.estaNaLista(10);
+        System.out.println(lista.pegarInicio());
     }
 
     public static void armazenarPilha(){

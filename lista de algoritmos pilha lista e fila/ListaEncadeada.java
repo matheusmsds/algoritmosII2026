@@ -2,6 +2,13 @@ public class ListaEncadeada {
     No inicio;
 	int tamanho;
 
+
+	private static class No {
+        int valor;
+        No proximo;
+        public No(int valor) { this.valor = valor; }
+    }
+
 	public ListaEncadeada() {
         this.inicio = null;
         this.tamanho = 0;
@@ -17,6 +24,17 @@ public class ListaEncadeada {
         while (t.proximo != null) t = t.proximo;
         t.proximo = novo;
     }
+
+	public boolean estaNaLista(int valor){
+		return pegarNalista(valor, this.inicio);
+	}
+
+	public boolean pegarNalista(int valor, No lista){
+		if(lista == null) return false;
+	
+		return (valor == lista.valor) ? true: pegarNalista(valor, lista.proximo);
+	}
+
 
     public void imprimir() {
         No t = inicio;
@@ -36,11 +54,6 @@ public class ListaEncadeada {
 
 		return atual.valor;
 	}
-
-	public int pegarInicio(){
-		return this.inicio.valor;
-	}
-
     // implemente este método usando recursão
     public int contarRecursivo(int valor) {
         return contarRecursivo(valor, inicio);
@@ -49,12 +62,6 @@ public class ListaEncadeada {
     private int contarRecursivo(int valor, No lista) {
     	if(lista == null) return 0;
     	return (lista.valor == valor ? 1 : 0)+contarRecursivo(valor, lista.proximo);
-    }
-
-    private static class No {
-        int valor;
-        No proximo;
-        public No(int valor) { this.valor = valor; }
     }
     
     public ListaEncadeada clone() {
@@ -74,9 +81,13 @@ public class ListaEncadeada {
         inicio = inicio.proximo;
         tamanho--;
 
-
         return removido;
     }
+
+	public int pegarInicio(){
+		return inicio.valor;
+	}
+
 
     public void adicionarInicio(int valor) {
         No novo = new No(valor);
@@ -126,29 +137,33 @@ public class ListaEncadeada {
     		aux = aux.proximo;
     	}
     	return novaLista;
+	
+	}
 
+	public int elemetosLista(){
+		return this.tamanho;
     }
     
-    public static void main(String[] args) {
-		ListaEncadeada lista = new ListaEncadeada();
-		lista.adicionarFim(10);
-		lista.adicionarFim(11);
-		lista.adicionarFim(15);
-		//System.out.println(lista.contarRecursivo(11));
-		//lista.imprimir();
-		//System.out.println(lista.removerTodos(10));
-		//lista.imprimir();
+    // public static void main(String[] args) {
+	// 	ListaEncadeada lista = new ListaEncadeada();
+	// 	lista.adicionarFim(10);
+	// 	lista.adicionarFim(11);
+	// 	lista.adicionarFim(15);
+	// 	//System.out.println(lista.contarRecursivo(11));
+	// 	//lista.imprimir();
+	// 	//System.out.println(lista.removerTodos(10));
+	// 	//lista.imprimir();
 		
-		ListaEncadeada posicaoPar = lista.elementosPosicaoPar();
-		lista.imprimir();
-		posicaoPar.imprimir();
+	// 	ListaEncadeada posicaoPar = lista.elementosPosicaoPar();
+	// 	lista.imprimir();
+	// 	posicaoPar.imprimir();
 		
 		
-		/*ListaEncadeada novaLista = lista.clone();
-		novaLista.imprimir();
-		novaLista.adicionarFim(100);
-		novaLista.imprimir();
-		lista.imprimir();*/
+	// 	/*ListaEncadeada novaLista = lista.clone();
+	// 	novaLista.imprimir();
+	// 	novaLista.adicionarFim(100);
+	// 	novaLista.imprimir();
+	// 	lista.imprimir();*/
 		
-	}
+	// }
 }
