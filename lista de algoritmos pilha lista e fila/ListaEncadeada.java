@@ -9,18 +9,32 @@ public class ListaEncadeada {
         public No(int valor) { this.valor = valor; }
     }
 
+	public int removerFinal(){
+		int removido = 0;
+		if(inicio == null) return 0;
+		if(inicio.proximo == null) {
+			inicio = null;
+		}else{
+			No aux = inicio;
+			while(aux.proximo.proximo != null){
+				aux = aux.proximo;
+			}
+			removido = aux.proximo.valor;
+			aux.proximo = null;
+		}
+		tamanho--;
+		return removido;
+	}
 
-	
 	public int removerInicio() {
         if (inicio == null) return 0;
         int removido = 0;
         removido = inicio.valor;
         inicio = inicio.proximo;
-        tamanho--;
 
+        tamanho--;
         return removido;
     }
-
 
 	public ListaEncadeada() {
         this.inicio = null;
