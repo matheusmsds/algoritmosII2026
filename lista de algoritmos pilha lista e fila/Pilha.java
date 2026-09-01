@@ -21,6 +21,24 @@ public class Pilha {
         return lista.tamanho;
     }
 
+    public void ePar(){
+        Pilha auxiliar = new Pilha();
+
+        while(!this.isEmpty()){
+            int elemento = this.pop();
+
+            if(elemento % 2 == 0){
+            }else{
+                auxiliar.push(elemento);
+            }
+        }
+
+        while(!auxiliar.isEmpty()){
+            this.push(auxiliar.pop());
+        }
+
+    }
+
     public boolean isEmpty(){
         return lista.estaVazia();
     }

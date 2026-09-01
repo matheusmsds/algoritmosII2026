@@ -1,14 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        ListaEncadeada lista = new ListaEncadeada();
-        for(int i = 0; i < 10; i++){
-            lista.adicionarInicio(i+10);
-        }
-
-        lista.imprimir();
-
-        System.out.println(lista.pegarMaior());
-        System.out.println(lista.pegarMenor());
+        armazenarPilha();
     }
 
     public static void armazenarPilha(){
@@ -20,8 +12,10 @@ public class Main {
 
         System.out.println();
 
+        pilha.ePar();
         pilha.print();
-
+       
+        
     }
 
     public static void armazenarFila(){

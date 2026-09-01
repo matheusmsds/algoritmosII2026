@@ -156,12 +156,15 @@ public class ListaEncadeada {
 
     public int removerTodos(int valor) {
     	int contador = 0;
+
     	while(inicio!=null && inicio.valor==valor) {
     		inicio = inicio.proximo;
     		contador++;
     	}
+
     	if(inicio==null) return contador;
-    	No aux = inicio;
+    	
+		No aux = inicio;
     	while(aux.proximo !=null) {
     		if(aux.proximo.valor==valor) {
     			contador++;
@@ -172,13 +175,22 @@ public class ListaEncadeada {
     	}
     	return contador;
     }
-
+	
 	public void limpar(){
 		this.inicio = null;
         this.tamanho = 0;
 	}
 
-    
+    public void ePar(){
+        No atual = inicio;
+        while(atual != null){
+            if(atual.valor % 2 == 0){
+				this.removerTodos(atual.valor);
+            }
+            atual = atual.proximo;
+        }
+    }
+	
     public ListaEncadeada elementosPosicaoPar() {
     	ListaEncadeada novaLista = new ListaEncadeada();
     	int indice=0;
